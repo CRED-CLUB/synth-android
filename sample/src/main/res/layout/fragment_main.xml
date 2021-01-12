@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainFragment">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="266:198"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pattern_top_right" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="266:198"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/pattern_bottom_left" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false">
+
+            <ImageView
+                android:id="@+id/header_image"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="50dp"
+                app:layout_constraintDimensionRatio="453:357"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/synth_header" />
+
+            <club.cred.synth.views.PitView
+                android:id="@+id/pit"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/bottom_barrier"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/top_barrier"
+                app:neuCornerRadius="16dp" />
+
+            <ImageView
+                android:id="@+id/buttons_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="50dp"
+                app:layout_constraintBottom_toTopOf="@id/gutter_image"
+                app:layout_constraintDimensionRatio="354:230"
+                app:layout_constraintEnd_toEndOf="@id/pit"
+                app:layout_constraintStart_toStartOf="@id/pit"
+                app:layout_constraintTop_toBottomOf="@id/header_image"
+                app:srcCompat="@drawable/buttons_image" />
+
+            <ImageView
+                android:id="@+id/gutter_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="354:230"
+                app:layout_constraintEnd_toEndOf="@id/pit"
+                app:layout_constraintStart_toStartOf="@id/pit"
+                app:layout_constraintTop_toBottomOf="@id/buttons_image"
+                app:srcCompat="@drawable/gutter_image" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/bottom_barrier"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:barrierDirection="bottom"
+                app:barrierMargin="10dp"
+                app:constraint_referenced_ids="gutter_image" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/top_barrier"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:barrierDirection="top"
+                app:barrierMargin="-10dp"
+                app:constraint_referenced_ids="buttons_image" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

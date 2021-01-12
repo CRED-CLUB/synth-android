@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2020 Dreamplug Technologies Private Limited
+  ~ Licensed under the Apache License, Version 2.0 (the “License”);
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~ Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and limitations under the License.
+  -->
+
+<resources>
+    <declare-styleable name="NeuButton">
+        <attr name="neuButtonType" />
+        <attr name="neuButtonRadius" format="dimension" />
+        <attr name="neuFlatButtonColor" />
+        <attr name="neuPlatformColor" />
+        <attr name="neuButtonCompatColor" />
+        <attr name="neuPlatformAppearance" />
+        <attr name="neuFlatButtonAppearance" format="reference" />
+        <attr name="neuButtonDrawable" format="reference" />
+        <attr name="neuButtonDrawablePitRadius" format="dimension" />
+        <attr name="neuButtonIconAppearance" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="NeuImageButton">
+        <attr name="neuButtonType" />
+        <attr name="neuButtonRadius" />
+        <attr name="neuFlatButtonColor" />
+        <attr name="neuPlatformColor" />
+        <attr name="neuFlatButtonAppearance" />
+    </declare-styleable>
+
+    <attr name="neuButtonType" format="enum">
+        <enum name="elevated_soft" value="2" />
+        <enum name="elevated_flat" value="3" />
+    </attr>
+
+    <attr name="neuPlatformColor" format="color" />
+    <attr name="neuFlatButtonColor" format="color" />
+    <attr name="neuButtonStartColor" format="color" />
+    <attr name="neuButtonEndColor" format="color" />
+    <attr name="neuButtonBorder1StartColor" format="color" />
+    <attr name="neuButtonBorder2StartColor" format="color" />
+    <attr name="neuButtonBorder1EndColor" format="color" />
+    <attr name="neuButtonBorder2EndColor" format="color" />
+    <attr name="neuButtonPressedDarkShadowColor" format="color" />
+    <attr name="neuButtonCompatColor" format="color" />
+    <attr name="neuPlatformAppearance" format="reference" />
+
+    <declare-styleable name="NeuFlatButtonAppearance">
+        <attr name="neuButtonStartColor" />
+        <attr name="neuButtonEndColor" />
+        <attr name="neuButtonBorder1StartColor" />
+        <attr name="neuButtonBorder2StartColor" />
+        <attr name="neuButtonBorder1EndColor" />
+        <attr name="neuButtonBorder2EndColor" />
+        <attr name="neuButtonPressedDarkShadowColor" />
+    </declare-styleable>
+
+    <attr name="neuLightShadowColor" format="color" />
+    <attr name="neuDarkShadowColor" format="color" />
+    <attr name="neuFillStartColor" format="color" />
+    <attr name="neuFillEndColor" format="color" />
+    <attr name="neuFillPressedStartColor" format="color" />
+    <attr name="neuFillPressedEndColor" format="color" />
+    <attr name="neuBorderStartColor" format="color" />
+    <attr name="neuBorderEndColor" format="color" />
+    <attr name="neuBorderPressedStartColor" format="color" />
+    <attr name="neuBorderPressedEndColor" format="color" />
+
+    <declare-styleable name="NeuPlatformAppearance">
+        <attr name="neuLightShadowColor" />
+        <attr name="neuDarkShadowColor" />
+        <attr name="neuFillStartColor" />
+        <attr name="neuFillEndColor" />
+        <attr name="neuFillPressedStartColor" />
+        <attr name="neuFillPressedEndColor" />
+        <attr name="neuBorderStartColor" />
+        <attr name="neuBorderEndColor" />
+        <attr name="neuBorderPressedStartColor" />
+        <attr name="neuBorderPressedEndColor" />
+    </declare-styleable>
+
+    <declare-styleable name="NeuButtonIconAppearance">
+        <attr name="neuFillStartColor" />
+        <attr name="neuFillEndColor" />
+        <attr name="neuFillPressedStartColor" />
+        <attr name="neuFillPressedEndColor" />
+        <attr name="neuButtonCompatColor" />
+    </declare-styleable>
+
+    <attr name="neuCornerRadius" format="dimension" />
+    <attr name="pitDepth" format="dimension" />
+    <attr name="neuShadowOffset" format="dimension" />
+    <attr name="isSoft" format="boolean" />
+    <attr name="drawShadows" format="boolean" />
+    <attr name="drawBackground" format="boolean" />
+    <attr name="isCard" format="boolean" />
+    <attr name="neuCompatColor" format="color" />
+
+    <attr name="pitClipType" format="enum">
+        <enum name="no_clip" value="0" />
+        <enum name="top" value="1" />
+        <enum name="bottom" value="2" />
+        <enum name="left" value="3" />
+        <enum name="right" value="4" />
+        <enum name="left_right" value="5" />
+        <enum name="top_bottom" value="6" />
+    </attr>
+    <declare-styleable name="PitView">
+        <attr name="pitColor" format="color" />
+        <attr name="pitViewAppearance" format="reference" />
+        <attr name="neuCornerRadius" />
+        <attr name="pitClipType" />
+        <attr name="pitDepth" />
+        <attr name="drawBackground" />
+        <attr name="drawShadows" />
+        <attr name="isCard" />
+        <attr name="isSoft" />
+    </declare-styleable>
+
+    <declare-styleable name="PitViewAppearance">
+        <attr name="neuLightShadowColor" />
+        <attr name="neuDarkShadowColor" />
+        <attr name="softEdgeColor" format="color" />
+        <attr name="neuCompatColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ElevatedView">
+        <attr name="neuPlatformColor" />
+        <attr name="neuCornerRadius" />
+        <attr name="neuShadowOffset" />
+        <attr name="neuPlatformAppearance" />
+    </declare-styleable>
+
+    <declare-styleable name="DividerView">
+        <attr name="drawShadows" />
+        <attr name="dividerColor" format="color" />
+        <attr name="dividerAppearance" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="DividerAppearance">
+        <attr name="neuDividerStartColor" format="color" />
+        <attr name="neuDividerMiddleColor" format="color" />
+        <attr name="neuDividerEndColor" format="color" />
+    </declare-styleable>
+</resources>

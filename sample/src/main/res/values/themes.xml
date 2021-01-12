@@ -1,0 +1,37 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.Synth" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/synth_color</item>
+        <item name="colorPrimaryDark">@color/synth_color</item>
+        <item name="android:statusBarColor">@color/synth_color</item>
+        <item name="android:navigationBarColor">@color/synth_color</item>
+        <item name="android:windowBackground">@color/synth_color</item>
+        <item name="neuFlatButtonAppearance">@style/elevatedFlat_blueButton</item>
+        <item name="dividerAppearance">@style/neuWhiteDivider</item>
+    </style>
+
+    <style name="Theme.Synth.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Synth.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Synth.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="elevatedFlat_blueButton">
+        <item name="neuButtonStartColor">#FF426bb6</item>
+        <item name="neuButtonEndColor">#FF26458c</item>
+        <item name="neuButtonBorder1StartColor">#FF5679c4</item>
+        <item name="neuButtonBorder1EndColor">#FF1b2d5b</item>
+        <item name="neuButtonBorder2StartColor">#FF366BD1</item>
+        <item name="neuButtonBorder2EndColor">#FF18263E</item>
+        <item name="neuButtonPressedDarkShadowColor">#80000000</item>
+    </style>
+
+    <style name="neuWhiteDivider">
+        <item name="neuDividerStartColor">#FF212426</item>
+        <item name="neuDividerMiddleColor">#FF2e3234</item>
+        <item name="neuDividerEndColor">#FF212426</item>
+    </style>
+</resources>

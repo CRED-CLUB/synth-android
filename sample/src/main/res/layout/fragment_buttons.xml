@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ButtonsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false">
+
+        <ImageView
+            android:id="@+id/close_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+
+        <ImageView
+            android:id="@+id/header_image"
+            android:layout_width="180dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintDimensionRatio="549:222"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/buttons_header" />
+
+        <ImageView
+            android:id="@+id/type1_text_image"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintDimensionRatio="116:40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_image"
+            app:srcCompat="@drawable/buttons_type1_text" />
+
+        <club.cred.synth.views.SynthButton
+            android:id="@+id/type1_icon_button"
+            android:layout_width="150dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="30dp"
+            android:drawablePadding="14dp"
+            android:gravity="center"
+            android:paddingStart="4dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="10dp"
+            android:text="Idle now"
+            android:textColor="@color/copper_text_color"
+            app:layout_constraintEnd_toStartOf="@id/type1_button"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/type1_text_image"
+            app:neuButtonDrawable="@drawable/ic_plus"
+            app:neuButtonDrawablePitRadius="20dp"
+            app:neuButtonRadius="23dp"
+            app:neuButtonType="elevated_soft" />
+
+        <club.cred.synth.views.SynthButton
+            android:id="@+id/type1_button"
+            android:layout_width="150dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="40dp"
+            android:drawablePadding="14dp"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Idle now"
+            android:textColor="@color/copper_text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/type1_icon_button"
+            app:layout_constraintTop_toTopOf="@id/type1_icon_button"
+            app:neuButtonRadius="23dp"
+            app:neuButtonType="elevated_soft" />
+
+        <ImageView
+            android:id="@+id/type2_text_image"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintDimensionRatio="120:40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/type1_icon_button"
+            app:srcCompat="@drawable/buttons_type2_text" />
+
+        <club.cred.synth.views.SynthImageButton
+            android:id="@+id/type2_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/type2_text_image"
+            app:neuButtonRadius="28dp"
+            app:neuButtonType="elevated_soft"
+            app:srcCompat="@drawable/ic_chevron_left" />
+
+        <ImageView
+            android:id="@+id/type3_text_image"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintDimensionRatio="116:40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/type2_button"
+            app:srcCompat="@drawable/buttons_type3_text" />
+
+        <club.cred.synth.views.SynthButton
+            android:id="@+id/type3_icon_button"
+            android:layout_width="150dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:drawablePadding="14dp"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="10dp"
+            android:text="Pay now"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/type3_button"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/type3_text_image"
+            app:neuButtonDrawable="@drawable/ic_plus"
+            app:neuButtonDrawablePitRadius="20dp"
+            app:neuButtonRadius="28dp"
+            app:neuButtonType="elevated_flat"
+            app:neuFlatButtonColor="#426bb6" />
+
+        <club.cred.synth.views.SynthButton
+            android:id="@+id/type3_button"
+            android:layout_width="150dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="40dp"
+            android:drawablePadding="14dp"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Pay now"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/type3_icon_button"
+            app:layout_constraintTop_toTopOf="@id/type3_icon_button"
+            app:neuButtonRadius="28dp"
+            app:neuButtonType="elevated_flat"
+            app:neuFlatButtonColor="#426bb6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

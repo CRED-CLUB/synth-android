@@ -1,0 +1,3 @@
+include ':synth'
+include ':sample'
+rootProject.name = "synth"
