@@ -8,65 +8,15 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
+
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'com.jfrog.bintray'
-    id 'maven-publish'
+//    id 'com.jfrog.bintray'
+//    id 'maven-publish'
 }
 
-// ------------- START OF BINTRAY PLUGIN
-
-// upload using ./gradlew clean build bintrayUpload
-
-def libraryGroupId = 'club.cred.android'
-def libraryArtifactId = 'synth'
-def libraryVersion = '1.0.0'
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.java.srcDirs
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = libraryGroupId
-                artifactId = libraryArtifactId
-                artifact(sourcesJar)
-                version = libraryVersion
-            }
-        }
-    }
-}
-
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-bintray {
-    user = properties.getProperty('bintray.user')
-    key = properties.getProperty('bintray.token')
-    publications = ['release']
-    publish = true
-    override = true
-    pkg {
-        repo = 'android'
-        name = libraryArtifactId
-        desc = 'synth is a library for using neumorphic components in your app'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/CRED-CLUB/synth-android.git'
-        publicDownloadNumbers = true
-        version {
-            name = libraryVersion
-            released = new Date()
-        }
-    }
-}
-
-// ----------------- END OF BINTRAY PLUGIN
+apply from: 'bintray.gradle'
 
 android {
     compileSdkVersion 30
