@@ -160,14 +160,14 @@ You can add a drawable to a button (to the left of the text). Synth will render 
 | `app:neuButtonCompatColor` | color of button on compat devices | color |
 
 
-## `PitView` and `ElevatedView`
+# PitView and ElevatedView
 
 ![Pit and Elevated Views](https://i.imgur.com/BVirv0g.png "Pit and Elevated Views")
 
 - `PitView` and `ElevatedView` are simple Views that can be used to simulate a debossed or embossed neumorphic platform
 -  They are not ViewGroups so ideally they can be used in a `ConstraintLayout` with other Views that are constrained to the `PitView` or `ElevatedView`.
 
-## `PitView`
+## PitView
 `PitView` shadows can be specified in two ways:
 1. By specifiying a color for the pit, synth will attempt to compute the shadows of the pit
 ```xml
@@ -192,7 +192,7 @@ You can add a drawable to a button (to the left of the text). Synth will render 
 </style>
 ```
 
-### `PitView` attributes
+### PitView attributes
 
 | attribute | description | value |
 |--|--|--|
@@ -202,13 +202,13 @@ You can add a drawable to a button (to the left of the text). Synth will render 
 | `app:pitClipType` | edge(s) of pit which should be clipped (no shadows or corner arc will be drawn) | `no_clip`, `top`, `bottom`, `left`, `right`, `left_right`, `top_bottom` |
 | `app:pitDepth` | depth of pit | dimension |
 
-## `ElevatedView` 
+## ElevatedView
 
 `ElevatedView` internally uses the same neumorphic platform that is used to draw the buttons. To specify the appearance and shadows of the `ElevatedView`, the same attributes  of soft button can be used:
 1. By specifying `app:neuPlatformColor`, synth will compute the shadows and gradients of the view.
 2. By specifying the complete appearance using `app:neuPlatformAppearance` (same as soft button).
 
-### `ElevatedView` attributes
+### ElevatedView attributes
 
 | attribute | description | value |
 |--|--|--|
