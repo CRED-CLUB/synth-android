@@ -1,13 +1,9 @@
-
 # Synth
 Synth is CRED's inbuilt library for using Neuromorphic components in your app.
 
-What really is Neumorphism? It's an impressionistic style, playing with light, shadow, and depth to create a digital experience inspired by the physical world. 
-That's the definition anyway. 
+What really is Neumorphism? It's an impressionistic style, playing with light, shadow, and depth to create a digital experience inspired by the physical world. That's the definition anyway. Our recommendation is you try it out to see what you make of it. If you do create something with Synth, let us know. We're excited to see where you take it.
 
-Our recommendation is you try it out to see what you make of it. 
-If you do create something with Synth, let us know. We're excited to see where you take it.
-
+A note for the curious: if you wish to learn more about Synth, we have a post detailing the concept and CRED's philosophy behind it [here](https://blog.cred.club/team-cred/design/world-meet-neumorphism-open-sourcing-our-ui-framework/).
 
 ![Banner](https://i.imgur.com/tKZeAwO.png "Banner")
 
@@ -20,13 +16,19 @@ dependencies {
 }
 ```
 
-## Usage
-The neumorphic components are only rendered on devices running API 28 (Pie) or later due to rendering issues on older devices. On these devices synth renders a less sophisticated view with no shadows or blurs (NSB).
+## Usage & SDK Limitations
 
 To use synth, the parent layout which contains the synth views must specify:
-```
+
+```xml
 android:clipChildren="false"
 ```
+
+Synth renders neumorphic components only on devices running API 28 (Pie) or later. This is because Synth internally uses [`BlurMaskFilter`](https://developer.android.com/reference/android/graphics/BlurMaskFilter) to render shadows and highlights which are drawn outside of the view bounds — this allows you to align Synth views with other views easily.
+
+Below API 28, to make `BlurMaskFilter` work, we need to use [hardware acceleration](https://developer.android.com/guide/topics/graphics/hardware-accel) on the view which causes the shadows and highlights to be clipped. To circumvent this, Synth would need to introduce padding to the views which might cause issues with alignments and so on.
+
+In lieu of this, we decided to introduce "compat" version of all our views which render a simple single colored background on the view on devices below API 28.
 
 # Buttons
 
@@ -169,6 +171,7 @@ You can add a drawable to a button (to the left of the text). Synth will render 
 
 - `PitView` and `ElevatedView` are simple Views that can be used to simulate a debossed or embossed neumorphic platform
 -  They are not ViewGroups so ideally they can be used in a `ConstraintLayout` with other Views that are constrained to the `PitView` or `ElevatedView`.
+- To use these freely with your views, `PitDrawable` and `ElevatedDrawable` can be set as background for your Views programatically.
 
 ## PitView
 `PitView` shadows can be specified in two ways:
@@ -230,12 +233,7 @@ Pull requests are welcome! We'd love help improving this library. Feel free to b
 
 ## Contributors
 
-Synth would not have been possible if not for the contributions made by:
-- Rishabh Singh Bisht
-- Nikhil Panju
-- Madhur Kapadia
-- Sidharth
-- Hari Krishna
+Synth would not have been possible if not for the contributions made by CRED's design and frontend teams.
 
 ## License
 
@@ -254,8 +252,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
-
-
-
-
