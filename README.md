@@ -2,7 +2,10 @@
 # Synth
 Synth is CRED's inbuilt library for using Neuromorphic components in your app.
 
-What really is Neumorphism? It's an impressionistic style, playing with light, shadow, and depth to create a digital experience inspired by the physical world. That's the definition anyway. Our recommendation is you try it out to see what you make of it.
+What really is Neumorphism? It's an impressionistic style, playing with light, shadow, and depth to create a digital experience inspired by the physical world. 
+That's the definition anyway. 
+
+Our recommendation is you try it out to see what you make of it. 
 If you do create something with Synth, let us know. We're excited to see where you take it.
 
 
