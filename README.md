@@ -1,13 +1,14 @@
-
 # Synth
-Synth is a library for using neumorphic components in your app.
-Neumorphism is an impressionistic style, playing with light, shadow, and depth to create a digital experience inspired by the physical world. It’s most visible in “plastic” building blocks: extruded, haptic elements that provide visual and tactical cues about their function. We are excited about neumorphism not only for its stunning appearance but also for the ease with which it allows members to use and distinguish between elements.
+Synth is CRED's inbuilt library for using Neuromorphic components in your app.
 
+What really is Neumorphism? It's an impressionistic style, playing with light, shadow, and depth to create a digital experience inspired by the physical world. That's the definition anyway. Our recommendation is you try it out to see what you make of it. If you do create something with Synth, let us know. We're excited to see where you take it.
+
+A note for the curious: if you wish to learn more about Synth, we have a post detailing the concept and CRED's philosophy behind it [here](https://blog.cred.club/team-cred/design/world-meet-neumorphism-open-sourcing-our-ui-framework/).
 
 ![Banner](https://i.imgur.com/tKZeAwO.png "Banner")
 
-## install
-you can install synth by adding this to your build.gradle file
+## Install
+You can install synth by adding this to your build.gradle file:
 
 ```
 dependencies {
@@ -15,21 +16,27 @@ dependencies {
 }
 ```
 
-## usage
-the neumorphic components are only rendered on devices running API 28 (Pie) or later due to rendering issues on older devices. on these devices synth renders a less sophisticated view with no shadows or blurs (NSB).
+## Usage & SDK Limitations
 
-to use synth, the parent layout which contains the synth views must specify:
-```
+To use synth, the parent layout which contains the synth views must specify:
+
+```xml
 android:clipChildren="false"
 ```
 
-# buttons
+Synth renders neumorphic components only on devices running API 28 (Pie) or later. This is because Synth internally uses [`BlurMaskFilter`](https://developer.android.com/reference/android/graphics/BlurMaskFilter) to render shadows and highlights which are drawn outside of the view bounds — this allows you to align Synth views with other views easily.
 
-## soft button
+The issue below API 28, is, to make `BlurMaskFilter` work, we need to use [hardware acceleration](https://developer.android.com/guide/topics/graphics/hardware-accel) on the view which causes the shadows and highlights to be clipped. We could solve for this by adding padding to the views (similar to how CardView does it) but chose not to because of alignment issues.
+
+In lieu of this, we decided to introduce "compat" version of all our views which render a simple single colored background on the view on devices below API 28.
+
+# Buttons
+
+## Soft button
 ![Soft Button](https://i.imgur.com/ih0WqFz.png "Soft Button")
 
-soft button renders the elevated neumorphic platform on which the text is drawn. this elevated platform can be customized in two ways:
-1. by specifiying a color for the platform, synth will attempt to compute the light and dark shadow colors 
+Soft button renders the elevated neumorphic platform on which the text is drawn. this elevated platform can be customized in two ways:
+1. By specifiying a color for the platform, synth will attempt to compute the light and dark shadow colors 
 ```xml
 <club.cred.synth.views.SynthButton
     app:neuButtonType="elevated_soft"
@@ -37,7 +44,7 @@ soft button renders the elevated neumorphic platform on which the text is drawn.
     ... />
 ```
 
-2. by specifiying a complete apperance for all aspects of the elevated platform
+2. By specifiying a complete apperance for all aspects of the elevated platform
 ```xml
 <club.cred.synth.views.SynthButton
     app:neuButtonType="elevated_soft"
@@ -57,12 +64,12 @@ soft button renders the elevated neumorphic platform on which the text is drawn.
 </style>
 ```
 
-## flat button
+## Flat button
 
 ![Flat Button](https://i.imgur.com/tgVOK5L.png "Flat Button")
 
-flat button renders a flat surface on top of the elevated neumorphic platform. this flat surface can be customized in two ways:
-1. by specifiying a color for the surface, synth will attempt to compute the gradients, borders, etc of the surface
+Flat button renders a flat surface on top of the elevated neumorphic platform. This flat surface can be customized in two ways:
+1. By specifiying a color for the surface, synth will attempt to compute the gradients, borders, etc of the surface
 ```xml
 <club.cred.synth.views.SynthButton
     app:neuButtonType="elevated_flat"
@@ -71,7 +78,7 @@ flat button renders a flat surface on top of the elevated neumorphic platform. t
     ... />
 ```
 
-2. by specifiying a complete apperance for all aspects of the flat surface
+2. By specifiying a complete apperance for all aspects of the flat surface
 ```xml
 <club.cred.synth.views.SynthButton
     app:neuButtonType="elevated_flat"
@@ -91,11 +98,11 @@ flat button renders a flat surface on top of the elevated neumorphic platform. t
 </style>
 ```
 
-## image button
+## Image button
 
 ![Image Button](https://i.imgur.com/eP17O6M.png "Image Button")
 
-image button is simply an image view with a neumorphic platform
+Image button is simply an image view with a neumorphic platform
 
 ```xml
 <club.cred.synth.views.SynthImageButton
@@ -104,13 +111,13 @@ image button is simply an image view with a neumorphic platform
     ... />
 ```
 
-## adding drawable to buttons
+## Adding drawable to buttons
 
 ![Drawable Button](https://i.imgur.com/Bnjb5Cj.png "Drawable Button")
 
-you can add a drawable to a button (to the left of the text). synth will render a neumorphic pit on which the drawable is rendered. this pit can be custonmized in two ways:
+You can add a drawable to a button (to the left of the text). Synth will render a neumorphic pit on which the drawable is rendered. This pit can be custonmized in two ways:
 
-1. by not specifiying anything, synth will take either the `neuPlatformColor` (if it's a soft button) or `neuFlatButtonColor` (if it's a flat button) and compute the gradient colors and pressed colors.
+1. By not specifiying anything, synth will take either the `neuPlatformColor` (if it's a soft button) or `neuFlatButtonColor` (if it's a flat button) and compute the gradient colors and pressed colors.
 
 ```xml
 <club.cred.synth.views.SynthButton
@@ -124,7 +131,7 @@ you can add a drawable to a button (to the left of the text). synth will render 
     ... />
 ```
 
-2. by specifiying a complete apperance for all aspects of the icon pit
+2. By specifiying a complete apperance for all aspects of the icon pit
 ```xml
 <club.cred.synth.views.SynthButton
     app:neuButtonType="elevated_flat"
@@ -143,8 +150,8 @@ you can add a drawable to a button (to the left of the text). synth will render 
 </style>
 ```
 
-## all button attributes
-| attribute | description | value |
+## All button attributes
+| Attribute | Description | Value |
 |--|--|--|
 |`app:neuButtonType`| type of the button | `elevated_flat` or `elevated_soft` |
 |`app:neuButtonRadius` | corner radius of button | dimension |
@@ -158,16 +165,17 @@ you can add a drawable to a button (to the left of the text). synth will render 
 | `app:neuButtonCompatColor` | color of button on compat devices | color |
 
 
-## `PitView` and `ElevatedView`
+# PitView and ElevatedView
 
 ![Pit and Elevated Views](https://i.imgur.com/BVirv0g.png "Pit and Elevated Views")
 
 - `PitView` and `ElevatedView` are simple Views that can be used to simulate a debossed or embossed neumorphic platform
--  they are not ViewGroups so ideally they can be used in a `ConstraintLayout` with other Views that are constrained to the `PitView` or `ElevatedView`.
+-  They are not ViewGroups so ideally they can be used in a `ConstraintLayout` with other Views that are constrained to the `PitView` or `ElevatedView`.
+- To use these freely with your views, `PitDrawable` and `ElevatedDrawable` can be set as background for your Views programatically.
 
-## `PitView`
+## PitView
 `PitView` shadows can be specified in two ways:
-1. by specifiying a color for the pit, synth will attempt to compute the shadows of the pit
+1. By specifiying a color for the pit, synth will attempt to compute the shadows of the pit
 ```xml
 <club.cred.synth.views.PitView
   app:pitColor="@color/pit_color"  
@@ -175,7 +183,7 @@ you can add a drawable to a button (to the left of the text). synth will render 
   ... />
 ```
 
-2. by specifiying a complete apperance for all aspects of the pit
+2. By specifiying a complete apperance for all aspects of the pit
 ```xml
 <club.cred.synth.views.PitView
   app:pitViewAppearance="@style/pit_view_appearance"  
@@ -190,7 +198,7 @@ you can add a drawable to a button (to the left of the text). synth will render 
 </style>
 ```
 
-### `PitView` attributes
+### PitView attributes
 
 | attribute | description | value |
 |--|--|--|
@@ -200,13 +208,13 @@ you can add a drawable to a button (to the left of the text). synth will render 
 | `app:pitClipType` | edge(s) of pit which should be clipped (no shadows or corner arc will be drawn) | `no_clip`, `top`, `bottom`, `left`, `right`, `left_right`, `top_bottom` |
 | `app:pitDepth` | depth of pit | dimension |
 
-## `ElevatedView` 
+## ElevatedView
 
 `ElevatedView` internally uses the same neumorphic platform that is used to draw the buttons. To specify the appearance and shadows of the `ElevatedView`, the same attributes  of soft button can be used:
 1. By specifying `app:neuPlatformColor`, synth will compute the shadows and gradients of the view.
 2. By specifying the complete appearance using `app:neuPlatformAppearance` (same as soft button).
 
-### `ElevatedView` attributes
+### ElevatedView attributes
 
 | attribute | description | value |
 |--|--|--|
@@ -225,12 +233,7 @@ Pull requests are welcome! We'd love help improving this library. Feel free to b
 
 ## Contributors
 
-Synth would not have been possible if not for the contributions made by:
-- Rishabh Singh Bisht
-- Nikhil Panju
-- Madhur Kapadia
-- Sidharth
-- Hari Krishna
+Synth would not have been possible if not for the contributions made by CRED's design and frontend teams.
 
 ## License
 
@@ -249,8 +252,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
-
-
-
-
