@@ -234,10 +234,10 @@ Pull requests are welcome! We'd love help improving this library. Feel free to b
 ## Contributors
 
 Synth would not have been possible if not for the contributions made by CRED's design and frontend teams. Specifically:
-- Rishab Singh Bisht
-- Nikhil Panju
-- Madhur Kapadia
-- Siddharth
+- Rishab Singh Bisht — [Linkedin](https://www.linkedin.com/in/rishabh-singh-bisht-b7550938/)
+- Nikhil Panju — [Twitter](https://twitter.com/nikhilpanju) | [Github](https://github.com/nikhilpanju) | [Linkedin](https://www.linkedin.com/in/nikhilpanju/)
+- Madhur Kapadia — [Twitter](https://twitter.com/madhurkapadia) | [Linkedin](https://www.linkedin.com/in/madhurkapadia)
+- Siddharth Kumar — [Twitter](https://twitter.com/itsiddharth_) | [Linkedin](https://www.linkedin.com/in/itssiddharth/)
 - Hari Krishna
 
 ## License
