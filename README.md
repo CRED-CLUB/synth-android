@@ -73,7 +73,7 @@ Flat button renders a flat surface on top of the elevated neumorphic platform. T
 ```xml
 <club.cred.synth.views.SynthButton
     app:neuButtonType="elevated_flat"
-    app:neuFlatButtonColor="@colo/button_surface_color"
+    app:neuFlatButtonColor="@color/button_surface_color"
     app:neuPlatformAppearance="@style/button_platform_appearance" 
     ... />
 ```
