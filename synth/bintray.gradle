@@ -15,7 +15,7 @@ apply plugin: 'maven-publish'
 
 def libraryGroupId = 'club.cred.android'
 def libraryArtifactId = 'synth'
-def libraryVersion = '1.0.0'
+def libraryVersion = '1.0.1'
 
 task sourcesJar(type: Jar) {
     classifier = 'sources'
