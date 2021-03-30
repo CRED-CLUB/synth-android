@@ -12,11 +12,14 @@ package club.cred.synth.internals
 
 import android.graphics.BlurMaskFilter
 import android.graphics.Canvas
+import android.graphics.CornerPathEffect
 import android.graphics.LinearGradient
 import android.graphics.Paint
+import android.graphics.Path
 import android.graphics.RectF
 import android.graphics.Shader
 import club.cred.synth.dp
+import club.cred.synth.helper.addParallelogram
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -81,9 +84,16 @@ class BlurGradientHelper(
         }
     }
 
+    val path = Path()
+    val pathEffect = CornerPathEffect(NeuPlatformHelper.DEFAULT_PATH_RAD)
+
     fun draw(canvas: Canvas, height: Int, width: Int) {
         updatePaint(height, width)
-        rectArea.set(0f, 0f, width.toFloat(), height.toFloat())
-        canvas.drawRoundRect(rectArea, radius, radius, paint)
+        // rectArea.set(0f, 0f, width.toFloat(), height.toFloat())
+        // canvas.drawRoundRect(rectArea, radius, radius, paint)
+
+        path.reset()
+        path.addParallelogram(height, width, 10.0, cornerRad = NeuPlatformHelper.DEFAULT_PATH_RAD.dp)
+        canvas.drawPath(path, paint)
     }
 }

@@ -43,56 +43,32 @@
             app:layout_constraintTop_toBottomOf="@+id/header_image"
             app:srcCompat="@drawable/emboss_deboss_text" />
 
-        <club.cred.synth.views.PitView
-            android:id="@+id/pit_view"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginHorizontal="64dp"
-            android:layout_marginTop="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emboss_text_image"
-            app:neuCornerRadius="14dp" />
 
         <club.cred.synth.views.ElevatedView
             android:id="@+id/elevated_view"
             android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginHorizontal="64dp"
+            android:layout_height="250dp"
+            android:layout_marginHorizontal="56dp"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pit_view"
+            app:layout_constraintTop_toBottomOf="@id/emboss_text_image"
             app:neuCornerRadius="14dp" />
 
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/bottom_barrier"
+        <club.cred.synth.views.ParallelogramLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:barrierDirection="bottom"
-            app:barrierMargin="30dp"
-            app:constraint_referenced_ids="elevated_view" />
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/top_barrier"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:barrierDirection="top"
-            app:barrierMargin="-30dp"
-            app:constraint_referenced_ids="pit_view" />
-
-        <View
-            android:id="@+id/border"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="34dp"
-            android:background="@drawable/gutter_border"
-            app:layout_constraintBottom_toBottomOf="@id/bottom_barrier"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/top_barrier" />
+            app:layout_constraintStart_toStartOf="@id/elevated_view"
+            app:layout_constraintEnd_toEndOf="@id/elevated_view"
+            app:layout_constraintTop_toTopOf="@id/elevated_view"
+            app:layout_constraintBottom_toBottomOf="@id/elevated_view">
+            <View
+                android:background="@drawable/bg_gradient"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </club.cred.synth.views.ParallelogramLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
