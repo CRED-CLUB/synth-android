@@ -12,6 +12,7 @@ package club.cred.synth.internals
 
 import android.graphics.BlurMaskFilter
 import android.graphics.Canvas
+import android.graphics.Path
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.withTranslation
@@ -19,6 +20,7 @@ import club.cred.synth.SynthUtils.TYPE_ELEVATED_FLAT
 import club.cred.synth.SynthUtils.TYPE_ELEVATED_SOFT
 import club.cred.synth.appearances.NeuPlatformAppearance
 import club.cred.synth.dp
+import club.cred.synth.helper.addParallelogram
 import club.cred.synth.helper.withClipOut
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -111,14 +113,24 @@ internal class NeuPlatformHelper(
         return true
     }
 
+    val path = Path()
+
     fun draw(canvas: Canvas, height: Int, width: Int) {
         val finalHeight = height + spread.toInt() * 2
         val finalWidth = width + spread.toInt() * 2
         val quickReject = canvas.quickReject(0f, 0f, finalWidth.toFloat(), finalHeight.toFloat(), Canvas.EdgeType.AA)
         if (!quickReject) {
             canvas.withTranslation(-spread, -spread) {
+                path.reset()
+                path.addParallelogram(
+                    height = height,
+                    width = width,
+                    angle = 10.0,
+                    cornerRad = DEFAULT_PATH_RAD.dp
+                )
+
                 // bg
-                withClipOut(clipOffset, clipOffset, finalWidth - clipOffset, finalHeight - clipOffset) {
+                withClipOut(path) {
                     withTranslation(shadowOffset / 2, shadowOffset / 2) {
                         darkShadow.draw(canvas, finalHeight, finalWidth)
                     }
@@ -138,5 +150,6 @@ internal class NeuPlatformHelper(
         private const val DEFAULT_CORNER_RADIUS = 20
         private const val DEFAULT_SHADOW_OFFSET = 12
         private const val DEFAULT_SPREAD = 0f
+        val DEFAULT_PATH_RAD = 20f
     }
 }

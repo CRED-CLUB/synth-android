@@ -12,9 +12,12 @@ package club.cred.synth.internals
 
 import android.graphics.BlurMaskFilter
 import android.graphics.Canvas
+import android.graphics.CornerPathEffect
 import android.graphics.Paint
+import android.graphics.Path
 import android.graphics.RectF
 import club.cred.synth.dp
+import club.cred.synth.helper.addParallelogram
 
 open class BlurHelper(
     blur: Float,
@@ -62,6 +65,9 @@ open class BlurHelper(
         }
     }
 
+    val path = Path()
+    val pathEffect = CornerPathEffect(NeuPlatformHelper.DEFAULT_PATH_RAD)
+
     fun draw(canvas: Canvas, height: Int, width: Int) {
         val quickReject = if (!onlyBorder) {
             canvas.quickReject(-blur, -blur, width + blur, height + blur, Canvas.EdgeType.AA)
@@ -69,8 +75,13 @@ open class BlurHelper(
             canvas.quickReject(0f, 0f, width.toFloat(), height.toFloat(), Canvas.EdgeType.AA)
         }
         if (!quickReject) {
-            rectArea.set(0f, 0f, width.toFloat(), height.toFloat())
-            canvas.drawRoundRect(rectArea, radius, radius, paint)
+            // rectArea.set(0f, 0f, width.toFloat(), height.toFloat())
+            // canvas.drawRoundRect(rectArea, radius, radius, paint)
+
+            path.reset()
+            path.addParallelogram(height, width, 10.0, cornerRad = NeuPlatformHelper.DEFAULT_PATH_RAD.dp)
+            canvas.drawPath(path, paint)
+
         }
     }
 }

@@ -13,12 +13,15 @@ package club.cred.synth.helper
 import android.graphics.Canvas
 import android.graphics.LinearGradient
 import android.graphics.Path
+import android.graphics.PointF
 import android.graphics.Region
 import android.graphics.Shader
 import android.os.Build
 import android.text.TextPaint
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import kotlin.math.hypot
+import kotlin.math.tan
 
 /**
  * clips everything inside the rect.
@@ -68,4 +71,59 @@ fun TextView.setGradientTextColors(vararg colors: Int) {
 
     val textShader: Shader = LinearGradient(0f, textSize / 2, width, textSize / 2, colors, null, Shader.TileMode.CLAMP)
     paint.shader = textShader
+}
+
+fun Path.addParallelogram(
+    height: Int,
+    width: Int,
+    angle: Double,
+    cornerRad: Float = 0f
+) {
+
+    val movePath = (height * tan(Math.toRadians(angle))).toFloat()
+
+    val topLeft = PointF(movePath, 0f)
+    val topRight = PointF(width.toFloat(), 0f)
+    val bottomRight = PointF(width.toFloat() - movePath, height.toFloat())
+    val bottomLeft = PointF(0f, height.toFloat())
+
+    val points = listOf(topLeft, topRight, bottomRight, bottomLeft, topLeft)
+
+    for (i in 0 until points.size - 1) {
+        val lineStart = getLineStart(points[i], points[i + 1], cornerRad)
+        val lineEnd = getLineEnd(points[i], points[i + 1], cornerRad)
+
+        if (i == 0) {
+            moveTo(lineStart.x, lineStart.y)
+        } else {
+            quadTo(points[i].x, points[i].y, lineStart.x, lineStart.y)
+        }
+
+        lineTo(lineEnd.x, lineEnd.y)
+    }
+
+    val topLineStart = getLineStart(topLeft, topRight, cornerRad)
+    quadTo(topLeft.x, topLeft.y, topLineStart.x, topLineStart.y)
+
+    close()
+}
+
+private fun getDist(p1: PointF, p2: PointF): Float = hypot(p1.x - p2.x, p1.y - p2.y)
+
+private fun getLineStart(p1: PointF, p2: PointF, cornerRad: Float): PointF {
+    // above 0.5 means the corner rad is greater than half of the side. This means that two curves will
+    // intersect. To prevent that, we cap the ratio at 0.5
+    val radLengthRatio: Float = (cornerRad / getDist(p1, p2)).takeIf { it <= 0.5f } ?: 0.5f
+    return PointF(
+        (1.0f - radLengthRatio) * p1.x + radLengthRatio * p2.x,
+        (1.0f - radLengthRatio) * p1.y + radLengthRatio * p2.y
+    )
+}
+
+private fun getLineEnd(p1: PointF, p2: PointF, cornerRad: Float): PointF {
+    val radLengthRatio: Float = (cornerRad / getDist(p1, p2)).takeIf { it <= 0.5f } ?: 0.5f
+    return PointF(
+        radLengthRatio * p1.x + (1.0f - radLengthRatio) * p2.x,
+        radLengthRatio * p1.y + (1.0f - radLengthRatio) * p2.y
+    )
 }
